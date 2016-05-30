@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/sanjeeb-talukdar/microservices-demo-config-repo.git
+          uri: https://github.com/sunilsoni/microservices-demo-config-repo
         native:
           search-locations: file:///C:/Apigee/micro-services/spring/security/microservices-demo-config-repo
   application:
