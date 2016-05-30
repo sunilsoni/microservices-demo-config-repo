@@ -25,7 +25,12 @@ server:
 
 management:
   port: 8983
-
+  
+# The OAuth2 server definition that would be used to send the authorization requests to
+authserver:
+    hostname: localhost
+    port: 9999
+	
 eureka:
   name: zuul-edge-sso-server
   awsAccessId: AKIAIXPIFMO634VRHDWA
@@ -33,17 +38,17 @@ eureka:
   preferSameZone: true
   shouldUseDns: true
   serviceUrl:
-    default: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+    default: http://localhost:8761/eureka/
   client:
     region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
-      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+      defaultZone: http://localhost:8761/eureka/
+      us-east-1a: http://localhost:8761/eureka/
   us-east-1:
       availabilityZones: us-east-1a
   instance:
-    hostname: ec2-52-204-13-89.compute-1.amazonaws.com
+    hostname: localhost
     non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
@@ -74,8 +79,8 @@ security:
     password: none
   oauth2:
     client:
-      accessTokenUri: http://ec2-52-23-235-69.compute-1.amazonaws.com/oauth/token
-      userAuthorizationUri: http://ec2-52-23-235-69.compute-1.amazonaws.com/oauth/authorize
+      accessTokenUri: http://${authserver.hostname}:${authserver.port}/oauth/token
+      userAuthorizationUri: http://${authserver.hostname}:${authserver.port}/oauth/authorize
       clientId: maybank-client
       clientSecret: maybank-client-secret
     resource:

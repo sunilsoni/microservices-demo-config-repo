@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://ec2-54-175-244-196.compute-1.amazonaws.com/
+      uri: http://localhost:8888    #http://ec2-54-175-244-196.compute-1.amazonaws.com/
   h2:
     console:
        enabled: true
@@ -31,17 +31,17 @@ eureka:
   preferSameZone: true
   shouldUseDns: true
   serviceUrl:
-    default: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+    default: http://localhost:8761/eureka/
   client:
     region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
-      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+      defaultZone: http://localhost:8761/eureka/
+      us-east-1a: http://localhost:8761/eureka/
   us-east-1:
       availabilityZones: us-east-1a
   instance:
-    hostname: ec2-54-85-89-255.compute-1.amazonaws.com
+    hostname: localhost  #ec2-54-85-89-255.compute-1.amazonaws.com
     non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
