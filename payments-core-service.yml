@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: payments-core-service
+  cloud:
+    config:
+      enabled: true
+#      uri: http://ec2-54-175-244-196.compute-1.amazonaws.com/
+     uri: http://localhost:8888            
+
+info:
+  component: Payments Core Service
+  
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  name: payments-core-service
+  awsAccessId: AKIAIXPIFMO634VRHDWA
+  awsSecretKey: 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
+  preferSameZone: true
+  shouldUseDns: true
+  serviceUrl:
+    default: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+  client:
+    region: us-east-1
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+  us-east-1:
+      availabilityZones: us-east-1a
+  instance:
+    hostname: ec2-52-87-245-61.compute-1.amazonaws.com
+    non-secure-port: 80
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+ #   metadataMap:
+ #     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+      
+logging:
+  level:
+    ROOT: 'ERROR'
+    org.springframework.web: 'ERROR'
+    org.springframework.cloud: 'ERROR'
+    org.springframework.boot: 'ERROR'
+    org.springframework: 'ERROR'
